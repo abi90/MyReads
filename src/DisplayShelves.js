@@ -160,7 +160,9 @@ class DisplayShelves extends Component{
           </div>
         </div>
         <div className="open-search">
-          <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
+          <Link to='/search'>
+            Add a book
+          </Link>
         </div>
       </div>
     )
