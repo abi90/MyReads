@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
-import SearchBooks from './SearchBooks'
-import ShelveBooks from './ShelveBooks'
-import * as BooksAPI from './BooksAPI'
+import SearchBooks from './components/SearchBooks'
+import ShelveBooks from './components/ShelveBooks'
+import * as BooksAPI from './utils/BooksAPI'
 import './App.css'
 
 class BooksApp extends Component {
+
   state = {
     books: []
   }
@@ -26,7 +27,6 @@ class BooksApp extends Component {
   }
 
   searchBooks = (query) => {
-    console.log(query);
     return BooksAPI.search(query).then((books) => books)
   }
 

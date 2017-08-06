@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import Shelf from './Shelf'
+import PropTypes from 'prop-types'
 
 const ShelveBooks = (props) => (
       <div className="list-books">
@@ -48,6 +49,9 @@ const ShelveBooks = (props) => (
         </div>
       </div>
     )
-
+ShelveBooks.propTypes = {
+    books: PropTypes.array.isRequired,
+    changeShelf: PropTypes.func.isRequired
+}
 
 export default ShelveBooks
