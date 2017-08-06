@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 class Book extends Component {
 
   updateBook(shelf){
-    this.setState({shelf})
     this.props.changeShelf(this.props.book, shelf)
   }
 
@@ -24,7 +23,7 @@ class Book extends Component {
           </div>
         </div>
         <div className="book-title">{book.title}</div>
-        <div className="book-authors">{book.authors.toString()}</div>
+        <div className="book-authors">{book.authors}</div>
         </div>
     )
   }
