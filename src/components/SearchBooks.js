@@ -21,7 +21,7 @@ class SearchBooks extends Component{
         (books)=>{
           console.log(books);
           if(books && books.error)
-          this.setState({results: []})
+            this.setState({results: []})
           else
             this.setState({results: books})
 
