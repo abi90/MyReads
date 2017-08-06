@@ -3,7 +3,7 @@ This project allows you to select and categorize books you have read,
 are currently reading, or want to read.
 
 
-This project is generated with [create-react-app](https://github.com/facebookincubator/create-react-app)
+This project was generated with [create-react-app](https://github.com/facebookincubator/create-react-app)
 version 1.3.3.
 
 ## Project Dependencies
@@ -16,5 +16,5 @@ npm install
 
 ## Build & development
 
-Run `npm run build` for building and `npm start` for preview.
+Run `npm start` for preview and `npm run build` for building.
  
