@@ -6,7 +6,8 @@ import PropTypes from 'prop-types'
 class SearchBooks extends Component{
   static propTypes = {
       changeShelf: PropTypes.func.isRequired,
-      searchBooks: PropTypes.func.isRequired
+      searchBooks: PropTypes.func.isRequired,
+      booksInShelf: PropTypes.array
   }
 
   state = {
@@ -16,7 +17,7 @@ class SearchBooks extends Component{
 
   updateQuery = (query) => {
     if(query){
-      this.setState({query: query.trim()})
+      this.setState({query: query})
       this.props.searchBooks(query.trim()).then(
         (books)=>{
           console.log(books);
@@ -24,8 +25,21 @@ class SearchBooks extends Component{
             this.setState({results: []})
           }
           else {
-            if(this.state.results !== books) {
-              this.setState({results: books})
+            // Update the search results with a shelf property
+            let results = books.map((book)=> {
+              let found = this.props.booksInShelf.find((b)=>{
+                return b.id === book.id
+              });
+              if(found){
+                book.shelf = found.shelf
+              }
+              else{
+                book.shelf = 'none'
+              }
+              return book
+            })
+            if(this.state.results !== results) {
+              this.setState({results: results})
             }
           }
         }

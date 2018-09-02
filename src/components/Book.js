@@ -1,26 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
-class Book extends Component {
-  
-  static propTypes = {
-      book: PropTypes.object.isRequired,
-      changeShelf: PropTypes.func.isRequired
-  }
-
-  updateBook(shelf){
-    this.props.changeShelf(this.props.book, shelf)
-  }
-
-  render(){
-    const book = this.props.book
-    return(
+const Book = (props) => {
+    const book = props.book
+    return (
       <div className="book">
         <div className="book-top">
           <div className="book-cover" style={{ backgroundImage: `url(${book.imageLinks && book.imageLinks.thumbnail})` }}></div>
           <div className="book-shelf-changer">
-            <select value={book.shelf} onChange={(event)=>{this.updateBook(event.target.value)}}>
-              <option value="none" disabled>Move to...</option>
+            <select value={book.shelf} onChange={(event)=>{props.changeShelf(book, event.target.value)}}>
+              <option value="" disabled>Move to...</option>
               <option value="currentlyReading">Currently Reading</option>
               <option value="wantToRead">Want to Read</option>
               <option value="read">Read</option>
@@ -33,6 +22,10 @@ class Book extends Component {
         </div>
     )
   }
-}
+
+  Book.propTypes = {
+      book: PropTypes.object.isRequired,
+      changeShelf: PropTypes.func.isRequired
+  }
 
 export default Book
