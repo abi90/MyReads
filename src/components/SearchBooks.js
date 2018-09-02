@@ -20,11 +20,14 @@ class SearchBooks extends Component{
       this.props.searchBooks(query.trim()).then(
         (books)=>{
           console.log(books);
-          if(books && books.error)
+          if(books && books.error){
             this.setState({results: []})
-          else
-            this.setState({results: books})
-
+          }
+          else {
+            if(this.state.results !== books) {
+              this.setState({results: books})
+            }
+          }
         }
       )
     }
@@ -53,7 +56,7 @@ class SearchBooks extends Component{
             {
               results && !results.error && (
                 results.map(
-                  (book) => (<li key={book.id}>
+                  (book) => (<li key={book.id + Math.floor(Math.random(4)*10000)}>
                     <Book book={book} changeShelf={this.props.changeShelf}/>
                   </li>)
                 )
