@@ -22,7 +22,7 @@ yarn-error.log*
 yarn.lock
 
 #.gitignore
-#src/*
-#public/*
-#build/static/css/*.map
-#build/static/js/*.map
+src/*
+public/*
+build/static/css/*.map
+build/static/js/*.map
